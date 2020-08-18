@@ -1,5 +1,6 @@
 package com.cjq.action;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cjq.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,8 @@ public class UserAction {
 
     @RequestMapping("/queryUser")
     public String queryUser() {
-        return userService.queryContents();
+        System.out.println(Thread.currentThread().getName() + "----------------action");
+        return JSONObject.toJSONString(userService.queryContents());
     }
 
     @RequestMapping(value = "/db/{can}", method = RequestMethod.GET)
